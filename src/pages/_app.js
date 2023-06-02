@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import '@/styles/globals.css';
-import './../styles/contact.css'
+import './../styles/contact.css';
+import Layout from '../../components/Layout';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -10,5 +11,5 @@ export default function App({ Component, pageProps }) {
     document.head.appendChild(link);
   }, []);
 
-  return <Component {...pageProps} />;
+  return <Layout><Component {...pageProps} /></Layout>;
 }
