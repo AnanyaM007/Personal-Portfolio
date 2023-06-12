@@ -1,220 +1,135 @@
-import { Stack, Typography, Box } from "@mui/material";
-import Image from "next/image";
-import C1 from "./../public/C1.png";
-import C2 from "./../public/C2.png";
-import C3 from "./../public/C3.png";
-import C4 from "./../public/C4.png";
-import C5 from "./../public/C5.png";
-import C6 from "./../public/C6.png";
+import { Stack, Typography } from "@mui/material";
+import { keyframes } from "@emotion/react";
+import { styled } from "@mui/system";
+
+const BackBox = styled(Stack)(({ theme }) => ({
+    backfaceVisibility: "hidden",
+    transformStyle: "preserve-3d",
+    transition: "transform 700ms",
+    height: "380px",
+    width: "275px",
+    borderRadius: "5px",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    overflow: "hidden",    
+    paddingTop:"20px",
+    "&::before": {
+        position: "absolute",
+        content: '""',
+        display: "block",
+        width: "250px",
+        height: "500px",
+        background: "#f3af00",
+        animation: `${rotation_481} 7000ms infinite linear`,
+    },
+}));
+
+const rotation_481 = keyframes`
+0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+`;
+const SkillCard = ({ title, items }) => {
+    return (
+        <BackBox>
+            <Stack gap={0.8} sx={{
+                marginBottom: "20px",
+                backgroundColor: "#485461",
+                backgroundImage: "linear-gradient(315deg, #485461 0%, #28313b 74%)",
+                display: "flex",
+                flexDirection: "column",
+                minWidth: "230px",
+                borderRadius: "5px",
+                // justifyContent: "space-around",
+                padding: "40px 20px 20px 20px",
+                alignItems: "center",
+                zIndex: 2,
+                minHeight: "335px",
+                color:"#f2f2f2",
+                '&:hover':{
+                    transform: "scale(1.1)",
+                    transition: "transform 1s ease-in-out",
+                    cursor: "pointer",
+                }
+            }}>
+                <Typography variant="h5" sx={{ fontSize: "25px", fontWeight: "600" }}>
+                    {title}
+                </Typography>
+                {items.map((item, index) => (
+                    <Typography key={index} sx={{ fontSize: "20px" }}>
+                        {item}
+                    </Typography>
+                ))}
+            </Stack>
+        </BackBox>
+    );
+};
 
 const skillCard = () => {
+    const languages = [
+        "Javascript",
+        "Python",
+        "C++",
+        "C",
+        "HTML",
+        "CSS",
+    ];
+
+    const frameworks = [
+        "React.js",
+        "Next.js",
+        "Typescript",
+        "Tailwind CSS",
+        "Bootstrap",
+        "Material-UI",
+        "Chakra-UI",
+        "Express.js",
+    ];
+
+    const developerTools = [
+        "Git",
+        "Github",
+        "Docker",
+        "Figma",
+        "VS Code",
+        "Postman",
+        "Selenium",
+    ];
+
+    const databases = [
+        "MySQL",
+        "MongoDB",
+        "Firebase",
+        "PostgreSQL",
+        "Prisma",
+        "Oracle Database",
+    ];
+
     return (
-        <>
-            <Stack>
-                <Stack gap={4} sx={{
+        <Stack>
+            <Stack
+                gap={4}
+                sx={{
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "center",
-                    flexWrap: "wrap"
-                }}>
-
-                    <Stack sx={{
-                        marginBottom: "30px",
-                        background: "#F3AF00",
-                        display: "flex",
-                        flexDirection: "column",
-                        minWidth: "220px",
-                        maxHeight: "300px",
-                        borderRadius: "5px",
-                        justifyContent: "space-around",
-                        padding: "20px",
-                        alignItems: "center"
-                    }}>
-                        <Typography variant="h5" sx={{
-                            fontSize: "25px",
-                            fontWeight: "600"
-                        }}>Languages
-                        </Typography>
-                        <Typography sx={{ fontSize: "20px" }}>HTML5</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>CSS3</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Javascript</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Python</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>C++</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>C</Typography>
-                        <Box sx={{
-                            position:"absolute",
-                            top:760,
-                            left:90,
-
-                            }}>
-                            <Image src={C1}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:540,
-                            left:135,
-
-                            }}>
-                            <Image src={C2}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:660,
-                            left:350,
-
-                            }}>
-                            <Image src={C3}></Image>
-                        </Box>
-                    </Stack>
-                    <Stack sx={{
-                        marginBottom: "30px",
-                        background: "#F3AF00",
-                        display: "flex",
-                        flexDirection: "column",
-                        minWidth: "220px",
-                        maxHeight: "300px",
-                        borderRadius: "5px",
-                        justifyContent: "space-around",
-                        padding: "20px",
-                        alignItems: "center",
-                        zIndex:1
-                    }}>
-                        <Typography variant="h5" sx={{
-                            fontSize: "25px",
-                            fontWeight: "600"
-                        }}>Frameworks
-                        </Typography>
-                        <Typography sx={{ fontSize: "20px" }}>React.js</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Next.js</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Tailwind CSS</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Bootstrap</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Material-UI</Typography>
-                        <Typography sx={{ fontSize: "20px" }}></Typography>
-                        <Box sx={{
-                            position:"absolute",
-                            top:830,
-                            left:480,
-
-                            }}>
-                            <Image src={C4}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:540,
-                            left:435,
-
-                            }}>
-                            <Image src={C5}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:490,
-                            left:640,
-
-                            }}>
-                            <Image src={C6}></Image>
-                        </Box>
-                    </Stack>
-                    <Stack sx={{
-                        marginBottom: "30px",
-                        background: "#F3AF00",
-                        display: "flex",
-                        flexDirection: "column",
-                        minWidth: "220px",
-                        maxHeight: "300px",
-                        borderRadius: "5px",
-                        justifyContent: "space-around",
-                        padding: "20px",
-                        alignItems: "center"
-                    }}>
-                        <Typography variant="h5" sx={{
-                            fontSize: "25px",
-                            fontWeight: "600"
-                        }}>Developer Tools
-                        </Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Git</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Github</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Docker</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Figma</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>VS Code</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Postman</Typography>
-                        <Box sx={{
-                            position:"absolute",
-                            top:760,
-                            left:680,
-                            zIndex:0
-                            }}>
-                            <Image src={C1}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:570,
-                            left:725,
-
-                            }}>
-                            <Image src={C2}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:660,
-                            left:940,
-
-                            }}>
-                            <Image src={C3}></Image>
-                        </Box>
-                    </Stack>
-                    <Stack sx={{
-                        marginBottom: "30px",
-                        background: "#F3AF00",
-                        display: "flex",
-                        flexDirection: "column",
-                        minWidth: "220px",
-                        height: "300px",
-                        borderRadius: "5px",
-                        justifyContent: "space-around",
-                        padding: "20px",
-                        alignItems: "center"
-                    }}>
-                        <Typography variant="h5" sx={{
-                            fontSize: "25px",
-                            fontWeight: "600"
-                        }}>Databases
-                        </Typography>
-                        <Typography sx={{ fontSize: "20px" }}>MySQL</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>MongoDB</Typography>
-                        <Typography sx={{ fontSize: "20px" }}>Firebase</Typography>
-                        <Typography sx={{ fontSize: "20px" }}></Typography>
-                        <Typography sx={{ fontSize: "20px" }}></Typography>
-                        <Typography sx={{ fontSize: "20px" }}></Typography>
-                        <Box sx={{
-                            position:"absolute",
-                            top:810,
-                            left:1070,
-
-                            }}>
-                            <Image src={C4}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:540,
-                            left:1010,
-
-                            }}>
-                            <Image src={C5}></Image>
-                        </Box>
-                        <Box sx={{
-                            position:"absolute",
-                            top:490,
-                            left:1230,
-
-                            }}>
-                            <Image src={C6}></Image>
-                        </Box>
-                    </Stack>
-                </Stack>
+                    flexWrap: "wrap",
+                }}
+            >
+                <SkillCard title="Languages" items={languages} />
+                <SkillCard title="Frameworks" items={frameworks} />
+                <SkillCard title="Developer Tools" items={developerTools} />
+                <SkillCard title="Databases" items={databases} />
             </Stack>
-        </>
+        </Stack>
     );
-}
+};
 
 export default skillCard;

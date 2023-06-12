@@ -1,76 +1,203 @@
-import { Button, Stack, Typography, Box } from "@mui/material";
+import { Button, Stack, Typography, Box, Divider } from "@mui/material";
 import Image from "next/image";
 import pic from "./../public/me.jpg";
 import NavbarD from './navbarD';
 import Socials from "./socials";
+import Link from "next/link";
+import { keyframes } from "@emotion/react";
+import { motion } from "framer-motion"
+import { styled } from "@mui/system"
 
 const HeroContent = () => {
-  return (
-    <Stack className="main">
-      <Stack flexDirection="row" position="absolute" justifyContent="flex-end" width="100%">
+  const growAnimation = keyframes`
+  from {
+    width: 120px;
+  }
+  to {
+    width: 200px; /* Adjust the width value to your desired length */
+  }
+`;
+  const AnimatedDivider = styled(Box)`
+width: 10px;
+height: 2px;
+background-color: #121212;
+transition: width 0.3s ease-in-out;
 
-        <Stack justifyContent="center" height="100vh" sx={{ position: "relative", left: "45px" }}>
-          <Typography variant="h3" sx={{ fontWeight: "800", marginBottom: "25px", fontSize: "60px" }}>Ananya Mohapatra</Typography>
-          <Typography variant="h5" sx={{ width: "300px", marginBottom: "35px", fontSize: "30px" }}>UI/UX Designer & Web Developer</Typography>
-          <Button variant="contained" sx={{
-            background: "none",
-            color: "#121212",
-            boxShadow: "none",
-            fontSize: "22px",
-            textTransform: "none",
-            fontWeight: "600",
-            justifyContent: "flex-start",
-            padding: "0",
-            maxWidth:"370px",
-            '&:hover': {
-              background: "none",
-              boxShadow: "none",
-            }
-          }}>More About Me &nbsp; <Box
-              component="img"
-              src="Arrow.svg"
+&:hover {
+  animation: ${growAnimation} 0.3s ease-in-out forwards;
+}
+`;
+  const draw = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: () => {
+      return {
+        pathLength: 1,
+        opacity: 1,
+        transition: {
+          pathLength: { type: "spring", duration: 5, bounce: 0 },
+          opacity: { duration: 0.5 }
+        }
+      };
+    }
+  };
+  const draw1 = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: () => {
+      return {
+        pathLength: 1,
+        opacity: 1,
+        transition: {
+          pathLength: { type: "spring", duration: 10, bounce: 0 },
+          opacity: { duration: 0.5 }
+        }
+      };
+    }
+  };
+
+  const slideInAnimation = keyframes`
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  `;
+
+  const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+  return (
+    <div>
+      <Stack className="main" >
+        <Stack height={"100vh"} flexDirection="row" justifyContent="flex-end" width="100%">
+          <Stack sx={{ zIndex: "2", width: "100%", position: "absolute" }}>
+            <NavbarD />
+          </Stack>
+          <Stack pl={5} pb={5} width={"100%"} justifyContent={"flex-end"} alignItems={"start"} sx={{ zIndex: "3", }}> <Socials /> </Stack>
+          <Stack zIndex={"2"} justifyContent="center" position={"absolute"} left={330} height="100vh" sx={{
+            animation: `${fadeInAnimation} 4s ease-in-out`
+          }}>
+            <Typography
+              variant="h3"
               sx={{
-                margin: "10px 0px"
-              }}
-            /></Button>
+                fontWeight: "800",
+                marginBottom: "25px",
+                fontSize: "60px"
+              }}>
+              Ananya Mohapatra
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                width: "300px",
+                marginBottom: "35px",
+                fontSize: "30px"
+              }}>
+              UI/UX Designer & Web Developer
+            </Typography>
+            <Link href={"/about"}><Button variant="contained" sx={{
+              background: "none",
+              color: "#121212",
+              boxShadow: "none",
+              fontSize: "22px",
+              textTransform: "none",
+              fontWeight: "600",
+              justifyContent: "flex-start",
+              padding: "0",
+              maxWidth: "370px",
+              '&:hover': {
+                background: "none",
+                boxShadow: "none",
+              }
+            }}>More About Me &nbsp; <Box
+                component="img"
+                src="Arrow.svg"
+                sx={{
+                  margin: "10px 0px"
+                }}
+              />
+
+            </Button></Link>
+            <AnimatedDivider />
+
+          </Stack>
+          <Box
+            sx={{
+              zIndex: "1",
+              animation: `${slideInAnimation} 2s ease-in-out`
+            }}>
+            <Image src={pic} alt="Ananya Mohapatra" height={696.2} />
+          </Box>
         </Stack>
-        <Image src={pic} alt="Ananya Mohapatra" height={700} />
+
+        <Box sx={{
+          position: "fixed"
+        }}>
+          <motion.svg
+            width="800"
+            height="200"
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.circle
+              cx="700"
+              cy="0"
+              r="140"
+              stroke="#454545"
+              variants={draw1}
+            />
+          </motion.svg>
+        </Box>
+
+        <Box
+          sx={{
+            position: "fixed"
+          }}
+        >
+          <motion.svg
+            width="200"
+            height="600"
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.circle
+              cy="330"
+              r="130"
+              stroke="#454545"
+              variants={draw}
+            />
+          </motion.svg>
+        </Box>
+        <Box
+          sx={{
+            position: "fixed",
+          }}
+        >
+          <motion.svg
+            width="800"
+            height="800"
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.circle
+              cx="580"
+              cy="780"
+              r="150"
+              stroke="#454545"
+              variants={draw}
+            />
+          </motion.svg>
+        </Box>
       </Stack>
-      <Stack sx={{ zIndex: "2" }}>
-        <NavbarD />
-      </Stack>
-      <Stack position="absolute" bottom="40px" left="40px">
-        <Socials />
-      </Stack>
-      <Box
-        component="img"
-        src="Ellipse 1.svg"
-        sx={{
-          width: "200px",
-          position: "absolute",
-          left: "576.5px"
-        }}
-      />
-      <Box
-        component="img"
-        src="Ellipse 2.svg"
-        sx={{
-          width: "100px",
-          position: "absolute",
-          top: "200px"
-        }}
-      />
-      <Box
-        component="img"
-        src="Ellipse 3.svg"
-        sx={{
-          width: "200px",
-          position: "absolute",
-          top: "632.5px",
-          left: "500px"
-        }}
-      />
-    </Stack>
+    </div>
   );
 }
 

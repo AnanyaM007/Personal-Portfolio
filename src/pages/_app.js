@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import '@/styles/globals.css';
-import './../styles/contact.css';
 import Layout from '../../components/Layout';
 
 export default function App({ Component, pageProps }) {
