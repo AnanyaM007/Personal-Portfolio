@@ -114,7 +114,7 @@ const Projects = () => {
             fontSize: { xs: "33px", sm: "40px", md: "50px" },
             marginBottom: "50px",
             fontWeight: "700",
-            textAlign:"center"
+            textAlign: "center"
           }}
         >
           Projects
@@ -144,7 +144,7 @@ const Projects = () => {
                 background: "#3d3d3d",
                 overflow: "hidden",
                 position: "relative",
-                justifyContent:"space-between",
+                justifyContent: "space-between",
               }}
               onMouseEnter={() => handleCardHover(index)}
               onMouseLeave={handleCardLeave}
@@ -262,14 +262,15 @@ const Projects = () => {
                 {project.tech1.map((techImg, techIndex) => (
 
                   <Typography
+                    key={techIndex}
                     sx={{
                       background: "radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%)",
                       borderRadius: "60px",
                       padding: "5px 20px",
-                      fontSize:"17px",
+                      fontSize: "17px",
                       display: hoveredIndex === index ? "none" : "block",
-                    }}>                   
-                      {techImg}
+                    }}>
+                    {techImg}
                   </Typography>
                 ))}
               </Stack>
