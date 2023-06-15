@@ -63,7 +63,7 @@ const HeroContent = () => {
           <Stack sx={{ zIndex: "2", width: "100%", position: "absolute" }}>
             <NavbarD />
           </Stack>
-          <Stack pl={5} pb={5} width={"100%"} justifyContent={"flex-end"} alignItems={"start"} sx={{ zIndex: "3", }}> <Socials /> </Stack>
+          <Stack pl={5} pb={5} width={"100%"} justifyContent={"flex-end"} alignItems={"start"} sx={{ zIndex: "10000", }}> <Socials /> </Stack>
           <Stack zIndex={"10"} justifyContent="center" position={"absolute"} left={330} height="100vh" sx={{
             animation: `${fadeInAnimation} 4s ease-in-out`
           }}>
