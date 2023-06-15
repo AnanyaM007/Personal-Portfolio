@@ -6,27 +6,9 @@ import Socials from "./socials";
 import Link from "next/link";
 import { keyframes } from "@emotion/react";
 import { motion } from "framer-motion"
-import { styled } from "@mui/system"
 
 const HeroContent = () => {
-  const growAnimation = keyframes`
-  from {
-    width: 120px;
-  }
-  to {
-    width: 200px; /* Adjust the width value to your desired length */
-  }
-`;
-  const AnimatedDivider = styled(Box)`
-width: 10px;
-height: 2px;
-background-color: #121212;
-transition: width 0.3s ease-in-out;
 
-&:hover {
-  animation: ${growAnimation} 0.3s ease-in-out forwards;
-}
-`;
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: () => {
@@ -82,7 +64,7 @@ transition: width 0.3s ease-in-out;
             <NavbarD />
           </Stack>
           <Stack pl={5} pb={5} width={"100%"} justifyContent={"flex-end"} alignItems={"start"} sx={{ zIndex: "3", }}> <Socials /> </Stack>
-          <Stack zIndex={"2"} justifyContent="center" position={"absolute"} left={330} height="100vh" sx={{
+          <Stack zIndex={"10"} justifyContent="center" position={"absolute"} left={330} height="100vh" sx={{
             animation: `${fadeInAnimation} 4s ease-in-out`
           }}>
             <Typography
@@ -116,6 +98,9 @@ transition: width 0.3s ease-in-out;
               '&:hover': {
                 background: "none",
                 boxShadow: "none",
+                transform: "scale(1.1)",
+                transition: "transform 1s ease-in-out",
+                cursor: "pointer",
               }
             }}>More About Me &nbsp; <Box
                 component="img"
@@ -126,7 +111,6 @@ transition: width 0.3s ease-in-out;
               />
 
             </Button></Link>
-            <AnimatedDivider />
 
           </Stack>
           <Box

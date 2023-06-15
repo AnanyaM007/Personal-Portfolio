@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Grid, CssBaseline, Box } from "@mui/material";
+import { TextField, Typography, Grid, CssBaseline, Box } from "@mui/material";
 import Image from 'next/image';
 import { Email } from "@mui/icons-material";
 import Navbar from "./../../components/navbarL";
@@ -10,7 +10,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ReactiveButton from 'reactive-button';
 import { keyframes } from "@emotion/react";
-import DoneIcon from '@mui/icons-material/Done';
 
 const Contact = () => {
     const [fname, setFname] = useState("");
