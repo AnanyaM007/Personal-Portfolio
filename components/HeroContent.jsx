@@ -59,12 +59,12 @@ const HeroContent = () => {
   return (
     <div>
       <Stack className="main" >
-        <Stack height={"100vh"} flexDirection="row" justifyContent="flex-end" width="100%">
+        <Stack height={"100dvh"} flexDirection="row" justifyContent="flex-end" width="100%">
           <Stack sx={{ zIndex: "2", width: "100%", position: "absolute" }}>
             <NavbarD />
           </Stack>
           <Stack pl={5} pb={5} width={"100%"} justifyContent={"flex-end"} alignItems={"start"} sx={{ zIndex: "10000", }}> <Socials /> </Stack>
-          <Stack zIndex={"10"} justifyContent="center" position={"absolute"} left={330} height="100vh" sx={{
+          <Stack justifyContent="center" position={"absolute"} left={330} height="100dvh" sx={{
             animation: `${fadeInAnimation} 4s ease-in-out`
           }}>
             <Typography
@@ -72,7 +72,8 @@ const HeroContent = () => {
               sx={{
                 fontWeight: "800",
                 marginBottom: "25px",
-                fontSize: "60px"
+                fontSize: "60px",
+                zIndex:"10000"
               }}>
               Ananya Mohapatra
             </Typography>
@@ -81,7 +82,8 @@ const HeroContent = () => {
               sx={{
                 width: "300px",
                 marginBottom: "35px",
-                fontSize: "30px"
+                fontSize: "30px",
+                zIndex:"10000"
               }}>
               UI/UX Designer & Web Developer
             </Typography>
@@ -95,6 +97,7 @@ const HeroContent = () => {
               justifyContent: "flex-start",
               padding: "0",
               maxWidth: "370px",
+              zIndex:"10000",
               '&:hover': {
                 background: "none",
                 boxShadow: "none",
