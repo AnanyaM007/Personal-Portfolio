@@ -40,7 +40,7 @@ const Menu = () => {
     }
   `;
 
-  const slideRightAnimation = keyframes`
+    const slideRightAnimation = keyframes`
     from {
         transform: translateX(100%);
         opacity: 0;
@@ -82,18 +82,18 @@ const Menu = () => {
                     background: "#3d3d3d",
                     color: "#B9C1C4",
                     borderRadius: "50%",
-                    width: "60px",
-                    height: "60px",
+                    width: { xs: "40px", sm: "60px" },
+                    height: { xs: "40px", sm: "60px" },
                     animation: `${slideRightAnimation} 1s ease-in-out`,
                     "&:hover": {
                         background: "#f3af00",
                         color: "#3d3d3d",
-                        border:"solid 2px #3d3d3d"
+                        border: "solid 2px #3d3d3d"
                     },
                 }}
                 onClick={handleMenuClick}
             >
-                {isOpen ? <CloseIcon /> : <MenuIcon />}
+                {isOpen ? <CloseIcon sx={{ fontSize: { xs: "20px", sm: "28px" },}} /> : <MenuIcon sx={{ fontSize: { xs: "20px", sm: "28px" },}} />}
             </IconButton>
 
             {isOpen && (
@@ -104,7 +104,7 @@ const Menu = () => {
                         top: 120,
                         right: "40px",
                         padding: "10px",
-                        zIndex:2
+                        zIndex: 2
                     }}
                 >
                     {menuItems.map((menuItem, index) => (
@@ -112,8 +112,8 @@ const Menu = () => {
                             key={menuItem.href}
                             href={menuItem.href}
                             underline="none"
-                            width={"60px"}
-                            height={"60px"}
+                            width= {{ xs: "40px", sm: "60px" }}
+                            height= {{ xs: "40px", sm: "60px" }}
                             display={"flex"}
                             justifyContent={"center"}
                             alignItems={"center"}
@@ -121,7 +121,7 @@ const Menu = () => {
                                 borderRadius: "50%",
                                 boxShadow:
                                     "inset 0 50px 0 0 #454545, inset 0 -30px 0 0 #454545",
-                                fontSize: "28px",
+                                    fontSize: { xs: "20px", sm: "28px" },
                                 color: "#f2f2f2",
                                 animation: `${slideDownAnimation} 0.5s ease-in-out ${index * 0.2
                                     }s forwards`,
@@ -147,25 +147,25 @@ const Menu = () => {
                         top: 120,
                         right: "40px",
                         padding: "10px",
-                        zIndex:2,
+                        zIndex: 2,
                     }}
                 >
                     {menuItems.map((menuItem, index) => (
                         <Link
-                        key={menuItem.href}
-                        href={menuItem.href}
-                        underline="none"
-                        width={"60px"}
-                        height={"60px"}
-                        display={"flex"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        sx={{
-                            borderRadius: "50%",
-                            boxShadow:
-                                "inset 0 50px 0 0 #454545, inset 0 -30px 0 0 #454545",
-                            fontSize: "28px",
-                            color: "#f2f2f2",
+                            key={menuItem.href}
+                            href={menuItem.href}
+                            underline="none"
+                            width= {{ xs: "40px", sm: "60px" }}
+                            height= {{ xs: "40px", sm: "60px" }}
+                            display={"flex"}
+                            justifyContent={"center"}
+                            alignItems={"center"}
+                            sx={{
+                                borderRadius: "50%",
+                                boxShadow:
+                                    "inset 0 50px 0 0 #454545, inset 0 -30px 0 0 #454545",
+                                fontSize: { xs: "20px", sm: "28px" },
+                                color: "#f2f2f2",
                                 animation: changeAnim ? `${slideUpAnimation} 0.4s ease-in-out ${(menuItems.length - index - 1) * 0.2}s backwards` : "none",
                                 opacity: 0,
                                 "&:hover": {
