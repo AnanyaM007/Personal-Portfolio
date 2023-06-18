@@ -60,7 +60,7 @@ const HeroContent = () => {
     <div>
       <Stack className="main" >
         <Stack height={{ lg: "100dvh" }} flexDirection={{ md: "column", lg: "row" }} justifyContent="center" width="100%">
-          <Stack sx={{ width: "100%", position: { lg: "absolute" }, zIndex: "2" }}>
+          <Stack sx={{ width: "100%", position: { lg: "absolute" }, zIndex: "12" }}>
             <NavbarD />
           </Stack>
           <Stack flexDirection={{ sm: "column", md: "row" }} alignItems={"center"} flexWrap={"wrap"}
