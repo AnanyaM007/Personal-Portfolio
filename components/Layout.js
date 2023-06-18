@@ -7,7 +7,7 @@ function Layout({ children }) {
     <ThemeProvider theme={theme}>
     <div>
       <Head>
-      <link rel="icon" href="logoDark.png" />
+      <link rel="icon" href="MainLogo.png" />
         <title>Ananya Mohapatra</title>
       </Head>
         {children}

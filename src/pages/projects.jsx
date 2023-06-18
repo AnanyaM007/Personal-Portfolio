@@ -91,6 +91,16 @@ const Projects = () => {
       opacity: 1;
     }
   `;
+  const slideDownAnimation = keyframes`
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  `;
 
   return (
     <>
@@ -103,6 +113,7 @@ const Projects = () => {
         <NavbarD />
         <Typography
           sx={{
+            animation: `${slideDownAnimation} 2s ease-in-out`,
             fontSize: { xs: "33px", sm: "40px", md: "50px" },
             marginBottom: "50px",
             fontWeight: "700",
@@ -120,6 +131,9 @@ const Projects = () => {
           pb={10}
           ml={2}
           mr={2}
+          sx={{
+            animation: `${slideUpAnimation} 2s ease-in-out`,
+          }}
         >
           {projects.map((project, index) => (
             <Stack

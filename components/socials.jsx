@@ -16,7 +16,7 @@ const Socials = () => {
 `;
     return (
         <>
-            <Stack gap={3} flexDirection={"row"} width={300} justifyContent={"space-between"} sx={{ animation: `${slideUpAnimation} 1.4s ease-in-out` }}>
+            <Stack pb={4} pl={5} gap={{xs:1, sm:3}} flexDirection={"row"} width={300} justifyContent={"space-between"} sx={{ animation: `${slideUpAnimation} 1.4s ease-in-out` }}>
 
                 <Link href="https://github.com/AnanyaM007"
                     target="_blank"
