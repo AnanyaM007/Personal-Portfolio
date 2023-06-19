@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import NavbarL from './../../components/navbarL';
 import { keyframes } from "@emotion/react";
-import { motion, useScroll } from "framer-motion"
 
 const Experience = () => {
 
@@ -72,27 +71,17 @@ const Experience = () => {
     opacity: 1;
   }
 `;
-  const slideLeftAnimation = keyframes`
+  const slideUpAnimation = keyframes`
 from {
-  transform: translateX(-100%);
+  transform: translateY(100%);
   opacity: 0;
 }
 to {
-  transform: translateX(0);
+  transform: translateY(0);
   opacity: 1;
 }
 `;
 
-  const slideRightAnimation = keyframes`
-from {
-  transform: translateX(100%);
-  opacity: 0;
-}
-to {
-  transform: translateX(0);
-  opacity: 1;
-}
-`;
   return (
     <>
       <Stack
@@ -124,7 +113,7 @@ to {
               marginLeft={{ md: 17 }}
               marginBottom={5}
               sx={{
-                animation: index % 2 === 0 ? `${slideLeftAnimation} 2s ease-in-out` : `${slideRightAnimation} 2s ease-in-out`,
+                animation: `${slideUpAnimation} 2s ease-in-out` ,
               }}
             >
               <Typography sx={{

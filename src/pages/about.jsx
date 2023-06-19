@@ -5,13 +5,13 @@ import SkillCard from "../../components/skillCard";
 import { keyframes } from "@emotion/react";
 
 const About = () => {
-  const slideInAnimation = keyframes`
+  const slideUpAnimation = keyframes`
   from {
-    transform: translateX(-100%);
+    transform: translateY(100%);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 `;
@@ -76,7 +76,7 @@ to {
             marginLeft: { xs: "30px", sm: "40px", md: "100px" },
             fontSize: { xs: "22px", sm: "26px", md: "28px" },
             marginBottom: "10px",
-            animation: `${slideInAnimation} 2s ease-in-out`
+            animation: `${slideUpAnimation} 2s ease-in-out`
           }}
         >Education
         </Typography>
@@ -87,7 +87,7 @@ to {
             marginRight: { xs: "20px", sm: "40px", md: "100px" },
             fontSize: { xs: "16px", md: "18px" },
             marginBottom: "50px",
-            animation: `${slideInAnimation} 2s ease-in-out` 
+            animation: `${slideUpAnimation} 2s ease-in-out` 
           }}>
              <strong>B-Tech in Information Technology :</strong>&nbsp; Veer Surendra Sai University of Technology <em style={{fontWeight:"300"}}> ( CGPA: 8.81 )</em><br></br>
              <strong>Intermediate Education :</strong>&nbsp; D.A.V Public School, Pokhariput <em style={{fontWeight:"300"}}> ( 96.6% )</em><br></br>
@@ -101,7 +101,7 @@ to {
             textAlign: "center",
             fontSize: { xs: "34px", sm: "34px", md: "40px" },
             marginBottom: "50px",
-            animation: `${slideInAnimation1} 2s ease-in-out`
+            animation: `${slideUpAnimation} 2s ease-in-out`
           }}>
           Technical Skills
         </Typography>
