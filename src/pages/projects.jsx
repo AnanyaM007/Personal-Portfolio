@@ -1,10 +1,20 @@
 import { Stack, Typography, Button, Box } from "@mui/material";
 import NavbarD from './../../components/navbarD';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { keyframes } from "@emotion/react";
+import Loading from './../../components/Loading';
 
 const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate an asynchronous operation
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
 
   const projects = [
     {
@@ -104,174 +114,178 @@ const Projects = () => {
 
   return (
     <>
-      <Stack
-        sx={{
-          minHeight: "100dvh",
-          background: "#F3AF00",
-        }}
-      >
-        <NavbarD />
-        <Typography
-          sx={{
-            animation: `${slideDownAnimation} 2s ease-in-out`,
-            fontSize: { xs: "33px", sm: "40px", md: "50px" },
-            marginBottom: "50px",
-            fontWeight: "700",
-            textAlign: "center"
-          }}
-        >
-          Projects
-        </Typography>
+      {isLoading ? (
+        <Loading />
+      ) : (
         <Stack
-          justifyContent={"center"}
-          alignItems={"center"}
-          direction={"row"}
-          gap={7}
-          flexWrap={"wrap"}
-          pb={10}
-          ml={2}
-          mr={2}
           sx={{
-            animation: `${slideUpAnimation} 2s ease-in-out`,
+            minHeight: "100dvh",
+            background: "#F3AF00",
           }}
         >
-          {projects.map((project, index) => (
-            <Stack
-              pt={5}
-              pl={3}
-              pr={3}
-              pb={5}
-              ml={0}
-              key={index}
-              sx={{
-                width: "360px",
-                minHeight: "200px",
-                borderRadius: "5px",
-                background: "#3d3d3d",
-                overflow: "hidden",
-                position: "relative",
-                justifyContent: "space-between",
-              }}
-              onMouseEnter={() => handleCardHover(index)}
-              onMouseLeave={handleCardLeave}
-            >
-              <Stack flexDirection={"row"} alignItems={"center"} gap={3}>
-                <Box
-                  component="img"
-                  src={project.img}
-                  width={"100px"}
-                  sx={{
-                    display: hoveredIndex === index ? "none" : "block",
-                  }}
-                />
-                <Typography
-                  sx={{
-                    fontSize: { xs: "20px", md: "30px" },
-                    fontWeight: "700",
-                    marginBottom: "10px",
-                    display: hoveredIndex === index ? "none" : "block",
-                    color: "#f2f2f2",
-                  }}
-                >
-                  {project.name}
-                </Typography>
-              </Stack>
-              {hoveredIndex === index && (
-                <Stack
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "rgba(0, 0, 0, 0.8)",
-                    animation: `${slideUpAnimation} 0.4s ease-in-out forwards`,
-                  }}
-                >
+          <NavbarD />
+          <Typography
+            sx={{
+              animation: `${slideDownAnimation} 2s ease-in-out`,
+              fontSize: { xs: "33px", sm: "40px", md: "50px" },
+              marginBottom: "50px",
+              fontWeight: "700",
+              textAlign: "center"
+            }}
+          >
+            Projects
+          </Typography>
+          <Stack
+            justifyContent={"center"}
+            alignItems={"center"}
+            direction={"row"}
+            gap={7}
+            flexWrap={"wrap"}
+            pb={10}
+            ml={2}
+            mr={2}
+            sx={{
+              animation: `${slideUpAnimation} 2s ease-in-out`,
+            }}
+          >
+            {projects.map((project, index) => (
+              <Stack
+                pt={5}
+                pl={3}
+                pr={3}
+                pb={5}
+                ml={0}
+                key={index}
+                sx={{
+                  width: "360px",
+                  minHeight: "200px",
+                  borderRadius: "5px",
+                  background: "#3d3d3d",
+                  overflow: "hidden",
+                  position: "relative",
+                  justifyContent: "space-between",
+                }}
+                onMouseEnter={() => handleCardHover(index)}
+                onMouseLeave={handleCardLeave}
+              >
+                <Stack flexDirection={"row"} alignItems={"center"} gap={3}>
+                  <Box
+                    component="img"
+                    src={project.img}
+                    width={"100px"}
+                    sx={{
+                      display: hoveredIndex === index ? "none" : "block",
+                    }}
+                  />
                   <Typography
                     sx={{
-                      fontSize: { xs: "15px", md: "18px" },
-                      fontWeight: "400",
-                      color: "#FFF",
-                      padding: "10px",
-                      textAlign: "center",
-                      opacity: 1,
+                      fontSize: { xs: "20px", md: "30px" },
+                      fontWeight: "700",
+                      marginBottom: "10px",
+                      display: hoveredIndex === index ? "none" : "block",
+                      color: "#f2f2f2",
                     }}
                   >
-                    {project.desc}
+                    {project.name}
                   </Typography>
-                  <Stack flexDirection={"row"} gap={5} justifyContent={"space-evenly"} width={"100%"} marginTop={5}>
-                    <Button
-                      variant="contained"
-                      href={project.github}
-                      target="_blank"
-                      sx={{
-                        background: "#f3af00",
-                        textTransform: "none",
-                        color: "#3d3d3d",
-                        boxShadow: "none",
-                        cursor: "pointer",
-                        width: "100px",
-                        '&:hover': {
-                          background: "#f2f2f2",
-                          boxShadow: "none",
-                        }
-                      }}
-                    >
-                      Code
-                    </Button>
-                    <Button
-                      variant="contained"
-                      href={project.link}
-                      target="_blank"
-                      sx={{
-                        background: "#f3af00",
-                        textTransform: "none",
-                        color: "#3d3d3d",
-                        boxShadow: "none",
-                        cursor: "pointer",
-                        width: "100px",
-                        '&:hover': {
-                          background: "#f2f2f2",
-                          boxShadow: "none",
-                        }
-                      }}
-                    >
-                      Link
-                    </Button>
-                  </Stack>
                 </Stack>
-              )}
-              <Stack
-
-                direction="row"
-                alignItems="center"
-                gap={2}
-                flexWrap={"wrap"}
-                marginTop={2}
-              >
-                {project.tech1.map((techImg, techIndex) => (
-
-                  <Typography
-                    key={techIndex}
+                {hoveredIndex === index && (
+                  <Stack
                     sx={{
-                      background: "radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%)",
-                      borderRadius: "60px",
-                      padding: "5px 20px",
-                      fontSize: "17px",
-                      display: hoveredIndex === index ? "none" : "block",
-                    }}>
-                    {techImg}
-                  </Typography>
-                ))}
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(0, 0, 0, 0.8)",
+                      animation: `${slideUpAnimation} 0.4s ease-in-out forwards`,
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "15px", md: "18px" },
+                        fontWeight: "400",
+                        color: "#FFF",
+                        padding: "10px",
+                        textAlign: "center",
+                        opacity: 1,
+                      }}
+                    >
+                      {project.desc}
+                    </Typography>
+                    <Stack flexDirection={"row"} gap={5} justifyContent={"space-evenly"} width={"100%"} marginTop={5}>
+                      <Button
+                        variant="contained"
+                        href={project.github}
+                        target="_blank"
+                        sx={{
+                          background: "#f3af00",
+                          textTransform: "none",
+                          color: "#3d3d3d",
+                          boxShadow: "none",
+                          cursor: "pointer",
+                          width: "100px",
+                          '&:hover': {
+                            background: "#f2f2f2",
+                            boxShadow: "none",
+                          }
+                        }}
+                      >
+                        Code
+                      </Button>
+                      <Button
+                        variant="contained"
+                        href={project.link}
+                        target="_blank"
+                        sx={{
+                          background: "#f3af00",
+                          textTransform: "none",
+                          color: "#3d3d3d",
+                          boxShadow: "none",
+                          cursor: "pointer",
+                          width: "100px",
+                          '&:hover': {
+                            background: "#f2f2f2",
+                            boxShadow: "none",
+                          }
+                        }}
+                      >
+                        Link
+                      </Button>
+                    </Stack>
+                  </Stack>
+                )}
+                <Stack
+
+                  direction="row"
+                  alignItems="center"
+                  gap={2}
+                  flexWrap={"wrap"}
+                  marginTop={2}
+                >
+                  {project.tech1.map((techImg, techIndex) => (
+
+                    <Typography
+                      key={techIndex}
+                      sx={{
+                        background: "radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%)",
+                        borderRadius: "60px",
+                        padding: "5px 20px",
+                        fontSize: "17px",
+                        display: hoveredIndex === index ? "none" : "block",
+                      }}>
+                      {techImg}
+                    </Typography>
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
-          ))}
+            ))}
+          </Stack>
         </Stack>
-      </Stack>
+      )}
     </>
   );
 };

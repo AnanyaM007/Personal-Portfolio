@@ -1,4 +1,4 @@
-import { Button, Link, Typography, Stack, Box } from "@mui/material";
+import { Button, Link, Stack, Box } from "@mui/material";
 import NavbarL from "../../components/navbarL";
 
 const NotFoundPage = () => {

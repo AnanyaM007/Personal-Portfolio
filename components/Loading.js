@@ -28,7 +28,7 @@ const Ball = styled.div`
   border-radius: 50%;
   background-color: ${props => props.color};
   margin: 0 8px;
-  animation: ${bounce1} 1s infinite;
+  animation: ${bounce1} 1.2s infinite;
   animation-delay: ${props => props.delay}s;
 `;
 
